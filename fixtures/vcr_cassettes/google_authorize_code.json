@@ -1,0 +1,65 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://accounts.google.com/.well-known/openid-configuration"
+    },
+    "response": {
+      "body": "{\n \"issuer\": \"https://accounts.google.com\",\n \"authorization_endpoint\": \"https://accounts.google.com/o/oauth2/v2/auth\",\n \"token_endpoint\": \"https://www.googleapis.com/oauth2/v4/token\",\n \"userinfo_endpoint\": \"https://www.googleapis.com/oauth2/v3/userinfo\",\n \"revocation_endpoint\": \"https://accounts.google.com/o/oauth2/revoke\",\n \"jwks_uri\": \"https://www.googleapis.com/oauth2/v3/certs\",\n \"response_types_supported\": [\n  \"code\",\n  \"token\",\n  \"id_token\",\n  \"code token\",\n  \"code id_token\",\n  \"token id_token\",\n  \"code token id_token\",\n  \"none\"\n ],\n \"subject_types_supported\": [\n  \"public\"\n ],\n \"id_token_signing_alg_values_supported\": [\n  \"RS256\"\n ],\n \"scopes_supported\": [\n  \"openid\",\n  \"email\",\n  \"profile\"\n ],\n \"token_endpoint_auth_methods_supported\": [\n  \"client_secret_post\",\n  \"client_secret_basic\"\n ],\n \"claims_supported\": [\n  \"aud\",\n  \"email\",\n  \"email_verified\",\n  \"exp\",\n  \"family_name\",\n  \"given_name\",\n  \"iat\",\n  \"iss\",\n  \"locale\",\n  \"name\",\n  \"picture\",\n  \"sub\"\n ],\n \"code_challenge_methods_supported\": [\n  \"plain\",\n  \"S256\"\n ]\n}\n",
+      "headers": {
+        "Accept-Ranges": "none",
+        "Vary": "Accept-Encoding",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Date": "Sun, 23 Jul 2017 04:00:34 GMT",
+        "Expires": "Sun, 23 Jul 2017 05:00:34 GMT",
+        "Last-Modified": "Mon, 01 Feb 2016 19:53:44 GMT",
+        "X-Content-Type-Options": "nosniff",
+        "Server": "sffe",
+        "X-XSS-Protection": "1; mode=block",
+        "Age": "969",
+        "Cache-Control": "public, max-age=3600",
+        "Alt-Svc": "quic=\":443\"; ma=2592000; v=\"39,38,37,36,35\"",
+        "Transfer-Encoding": "chunked"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  },
+  {
+    "request": {
+      "body": "code=a-noice-code&client_id=googleClientId&client_secret=googleClientSecret&redirect_uri=http%3a%2f%2flocalhost%2fgoogle%2foauth&grant_type=authorization_code",
+      "headers": {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://www.googleapis.com/oauth2/v4/token"
+    },
+    "response": {
+      "body": "{\n \"access_token\": \"an-access-token\",\n \"token_type\": \"Bearer\",\n \"expires_in\": 3600,\n \"refresh_token\": \"a-refresh-token\",\n \"id_token\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg0ZDlkNmM0ZTAwNTRhMjM4Mzk2OWFlODA0MmY3OWMzMDIyMTU1N2UifQ.eyJhenAiOiI1MDg3Mzk0NTAwNDMtcmJhNzQ3M3VrbXYxcWprMWRiNG12YjRuYnRzNWxlaGQuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiI1MDg3Mzk0NTAwNDMtcmJhNzQ3M3VrbXYxcWprMWRiNG12YjRuYnRzNWxlaGQuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMDUwODA5NjcyNjc1MDQzOTAzNjEiLCJlbWFpbCI6ImptbnNmZXJyZWlyYUBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXRfaGFzaCI6IkpvOE9lTFJjeVp0ZlBlRElXOE96THciLCJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJpYXQiOjE1MDA3ODM0MDMsImV4cCI6MTUwMDc4NzAwM30.hjqR9cNcUuhjEJksSyEM9yZ-dI0kPgIy6dqzTzzq9s7oymrCL1yPqylc4-U6XSFoCq43NWuP1JMcgSb1MOllqI-mpyOaWelEkJ11lUEjLmN7t9wOhm8YniyHgBWY0GgY6n0ATKcweI3GnCNlPM3_O6sqfMbFKwJ6GjM8PupncZdGup_utV4PwCMuZG7gg5Y20iB2hcSLPnekfzHnmSvd8_B1cf55QZQ30Glv50RtJw5Lqd8I2hktsuk9EQ7s0Xo3HFBmdQnkd8iCHKi1UKKkMprP34P2f9r4A0X-67a4ZQWoYSjJJvlgu4nFNI3-DobMsUraPqVOWPas_w3V2luDBQ\"\n}\n",
+      "headers": {
+        "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+        "Pragma": "no-cache",
+        "Expires": "Mon, 01 Jan 1990 00:00:00 GMT",
+        "Date": "Sun, 23 Jul 2017 04:16:43 GMT",
+        "Vary": "X-Origin",
+        "Content-Type": "application/json; charset=UTF-8",
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "Server": "GSE",
+        "Alt-Svc": "quic=\":443\"; ma=2592000; v=\"39,38,37,36,35\"",
+        "Accept-Ranges": "none",
+        "Transfer-Encoding": "chunked"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

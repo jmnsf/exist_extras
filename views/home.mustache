@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+  <title>Exist Extras</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://use.fontawesome.com/18ad05af1d.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.min.css">
+</head>
+<body class="has-text-centered">
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-offset-one-quarter is-half">
+          <h2 class="subtitle">
+            Update your nutrition info
+          </h2>
+
+          <form action="/exist/nutrition" method="POST">
+            <div class="field is-horizontal">
+              <div class="field-label">
+                <label class="label">Calories</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control has-icons-left">
+                    <input class="input" type="number" name="calories" />
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-fire"></i>
+                    </span>
+                  </div>
+                  <p class="help">In kCal</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label">
+                <label class="label">Carbs (Total)</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control has-icons-left">
+                    <input class="input" type="number" name="carbs" required />
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-balance-scale"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label">
+                <label class="label">Protein</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control has-icons-left">
+                    <input class="input" type="number" name="protein" required />
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-balance-scale"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label">
+                <label class="label">Fat</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control has-icons-left">
+                    <input class="input" type="number" name="fat" required />
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-balance-scale"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label">
+                <label class="label">Day</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <input class="input" type="date" name="date" value="{{ today }}" max="{{ today }}" required />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label"></div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <button class="button is-primary" type="submit">
+                      Save
+                    </button>
+                  </div>
+                </div>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

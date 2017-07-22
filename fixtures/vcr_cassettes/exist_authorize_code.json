@@ -1,0 +1,29 @@
+[
+  {
+    "request": {
+      "body": "code=some-code&client_id=existClientId&client_secret=existClientSecret&redirect_uri=http%3a%2f%2flocalhost%2fexist%2foauth&grant_type=authorization_code",
+      "headers": {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://exist.io/oauth2/access_token"
+    },
+    "response": {
+      "body": "{\"access_token\": \"an-access-token\", \"token_type\": \"Bearer\", \"expires_in\": 31535999, \"refresh_token\": \"a-refresh-token\", \"scope\": \"read write read+write\"}",
+      "headers": {
+        "Server": "nginx/1.6.2",
+        "Date": "Sun, 23 Jul 2017 05:31:19 GMT",
+        "Content-Type": "application/json",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "ETag": "\"e2dcb7278246daab6331ecbe6226e8ff\"",
+        "Pragma": "no-cache",
+        "Cache-Control": "no-store"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

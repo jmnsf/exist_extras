@@ -1,0 +1,33 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://accounts.google.com/.well-known/openid-configuration"
+    },
+    "response": {
+      "body": "{\n \"issuer\": \"https://accounts.google.com\",\n \"authorization_endpoint\": \"https://accounts.google.com/o/oauth2/v2/auth\",\n \"token_endpoint\": \"https://www.googleapis.com/oauth2/v4/token\",\n \"userinfo_endpoint\": \"https://www.googleapis.com/oauth2/v3/userinfo\",\n \"revocation_endpoint\": \"https://accounts.google.com/o/oauth2/revoke\",\n \"jwks_uri\": \"https://www.googleapis.com/oauth2/v3/certs\",\n \"response_types_supported\": [\n  \"code\",\n  \"token\",\n  \"id_token\",\n  \"code token\",\n  \"code id_token\",\n  \"token id_token\",\n  \"code token id_token\",\n  \"none\"\n ],\n \"subject_types_supported\": [\n  \"public\"\n ],\n \"id_token_signing_alg_values_supported\": [\n  \"RS256\"\n ],\n \"scopes_supported\": [\n  \"openid\",\n  \"email\",\n  \"profile\"\n ],\n \"token_endpoint_auth_methods_supported\": [\n  \"client_secret_post\",\n  \"client_secret_basic\"\n ],\n \"claims_supported\": [\n  \"aud\",\n  \"email\",\n  \"email_verified\",\n  \"exp\",\n  \"family_name\",\n  \"given_name\",\n  \"iat\",\n  \"iss\",\n  \"locale\",\n  \"name\",\n  \"picture\",\n  \"sub\"\n ],\n \"code_challenge_methods_supported\": [\n  \"plain\",\n  \"S256\"\n ]\n}\n",
+      "headers": {
+        "Accept-Ranges": "none",
+        "Vary": "Accept-Encoding",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Date": "Sat, 22 Jul 2017 13:26:23 GMT",
+        "Expires": "Sat, 22 Jul 2017 14:26:23 GMT",
+        "Last-Modified": "Mon, 01 Feb 2016 19:53:44 GMT",
+        "X-Content-Type-Options": "nosniff",
+        "Server": "sffe",
+        "X-XSS-Protection": "1; mode=block",
+        "Age": "938",
+        "Cache-Control": "public, max-age=3600",
+        "Alt-Svc": "quic=\":443\"; ma=2592000; v=\"39,38,37,36,35\"",
+        "Transfer-Encoding": "chunked"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]
