@@ -1,0 +1,248 @@
+<!doctype html>
+<html>
+<head>
+  <title>Exist Extras</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://use.fontawesome.com/18ad05af1d.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-half">
+          <h2 class="title is-2">
+            Nutrition
+          </h2>
+
+          {{#saved}}
+            <div class="notification">
+              <button class="delete"></button>
+              Nutrition data successfully submitted :)
+            </div>
+          {{/saved}}
+
+          <form action="/exist/nutrition" method="POST">
+            <div class="field is-horizontal">
+              <div class="field-label">
+                <label class="label">Day</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <input class="input" type="date" name="date" value="{{ today }}" max="{{ today }}" required />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label">
+                <label class="label">Calories</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control has-icons-left">
+                    <input class="input" type="number" name="calories" min="0" required />
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-fire"></i>
+                    </span>
+                  </div>
+                  <p class="help">In kCal</p>
+                </div>
+              </div>
+            </div>
+
+            <h3 class="title is-3">Macros</h3>
+
+            <div class="field is-horizontal">
+              <div class="field-label">
+                <label class="label">Fat</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control has-icons-left has-icons-right">
+                    <input class="input" type="number" name="fat" min="0" />
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-balance-scale"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                      <i>g</i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label">
+                <label class="label">Carbs (Total)</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control has-icons-left has-icons-right">
+                    <input class="input" type="number" name="carbs" min="0" />
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-balance-scale"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                      <i>g</i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label">
+                <label class="label">Protein</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control has-icons-left has-icons-right">
+                    <input class="input" type="number" name="protein" min="0" />
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-balance-scale"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                      <i>g</i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h3 class="title is-3">Micros</h3>
+
+            <div class="field is-horizontal">
+              <div class="field-label">
+                <label class="label">Fiber</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control has-icons-left has-icons-right">
+                    <input class="input" type="number" name="fiber" min="0" />
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-balance-scale"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                      <i>g</i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label">
+                <label class="label">Sugar</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control has-icons-left has-icons-right">
+                    <input class="input" type="number" name="sugar" min="0" />
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-balance-scale"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                      <i>g</i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label">
+                <label class="label">Sodium</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control has-icons-left has-icons-right">
+                    <input class="input" type="number" name="sodium" min="0" />
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-balance-scale"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                      <i>mg</i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label">
+                <label class="label">Cholesterol</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control has-icons-left has-icons-right">
+                    <input class="input" type="number" name="cholesterol" min="0" />
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-balance-scale"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                      <i>mg</i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label"></div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <button class="button is-primary" type="submit">
+                      Save
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="column is-half">
+          <div class="content">
+            <h4 class="title is-4">What's this?</h4>
+            <p>Use the form on the left to upload your nutrition data to Exist. Only Calories and today&lsquo;s Date are required, feel free to omit any other fields you don&lsquo;t feel like updating.</p>
+
+            <h4 class="title is-4">Data Access</h4>
+            <p>We can currently write to the following attributes in Exist:</p>
+            <code>
+            {{#attributes}}
+              <span class="attribute-label">{{label}}</span>
+            {{/attributes}}
+            {{^attributes}}
+              None :(
+            {{/attributes}}
+            </code>
+
+            <p>If you think there should be more, double-check attribute ownership under your <a href="https://exist.io/account/attributes/">Exist account settings</a> and hit refresh below.</p>
+
+            <form action="/exist/attributes/acquire" method="POST">
+              <button class="button" type="submit">
+                <i class="fa fa-refresh"></i>&nbsp;Refresh
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script type="text/javascript">
+    document.querySelectorAll('.delete').forEach(function (deleteBtn) {
+      deleteBtn.addEventListener('click', function (event) {
+        event.originalTarget.parentNode.remove();
+      });
+    });
+  </script>
+</body>
+</html>

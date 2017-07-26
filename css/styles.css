@@ -1,0 +1,11 @@
+.attribute-label {
+  color: black;
+}
+
+.attribute-label::after {
+  content: ', ';
+}
+
+.attribute-label:last-of-type::after {
+  content: '';
+}

@@ -87,7 +87,7 @@ defmodule ExistExtras.Exist.OAuthTestSync do
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
 
   setup_all do
-    ExVCR.Config.cassette_library_dir "fixtures/vcr_cassettes"
+    ExVCR.Config.cassette_library_dir "fixtures/vcr_cassettes/exist"
     :ok
   end
 

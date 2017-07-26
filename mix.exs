@@ -35,9 +35,11 @@ defmodule ExistExtras.Mixfile do
       {:redix, "~> 0.5.1"},
       {:maru, github: "elixir-maru/maru"},
       {:mustache, "~> 0.0.2"},
+      {:mustachex, "~> 0.0.1"},
       {:httpoison, "~> 0.11.1"},
       {:joken, "~> 1.1"},
-      {:exvcr, "~> 0.8", only: :test}
+      {:exvcr, "~> 0.8", only: :test},
+      {:floki, "~> 0.17.0", only: :test}
     ]
   end
 

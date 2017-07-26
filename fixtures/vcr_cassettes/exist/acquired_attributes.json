@@ -1,0 +1,34 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Authorization": "Bearer ACCESS_TOKEN",
+        "Accept": "application/json"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://exist.io/api/1/attributes/owned/"
+    },
+    "response": {
+      "body": "[{\"attribute\":\"energy\",\"label\":\"Energy in\",\"value\":null,\"service\":\"community_extras\",\"priority\":1,\"private\":true,\"value_type\":1,\"value_type_description\":\"Float\"},{\"attribute\":\"carbohydrates\",\"label\":\"Carbohydrates\",\"value\":null,\"service\":\"community_extras\",\"priority\":3,\"private\":true,\"value_type\":1,\"value_type_description\":\"Float\"},{\"attribute\":\"fat\",\"label\":\"Fat\",\"value\":null,\"service\":\"community_extras\",\"priority\":3,\"private\":true,\"value_type\":1,\"value_type_description\":\"Float\"},{\"attribute\":\"fibre\",\"label\":\"Fibre\",\"value\":null,\"service\":\"community_extras\",\"priority\":3,\"private\":true,\"value_type\":1,\"value_type_description\":\"Float\"},{\"attribute\":\"protein\",\"label\":\"Protein\",\"value\":null,\"service\":\"community_extras\",\"priority\":3,\"private\":true,\"value_type\":1,\"value_type_description\":\"Float\"},{\"attribute\":\"sodium\",\"label\":\"Sodium\",\"value\":null,\"service\":\"community_extras\",\"priority\":3,\"private\":true,\"value_type\":1,\"value_type_description\":\"Float\"},{\"attribute\":\"sugar\",\"label\":\"Sugar\",\"value\":null,\"service\":\"community_extras\",\"priority\":3,\"private\":true,\"value_type\":1,\"value_type_description\":\"Float\"},{\"attribute\":\"cholesterol\",\"label\":\"Cholesterol\",\"value\":null,\"service\":\"community_extras\",\"priority\":4,\"private\":true,\"value_type\":1,\"value_type_description\":\"Float\"}]",
+      "headers": {
+        "Server": "nginx/1.6.2",
+        "Date": "Wed, 26 Jul 2017 10:22:22 GMT",
+        "Content-Type": "application/json",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "Vary": "Cookie",
+        "ETag": "\"a3713d6b5317049f51eebf25d62ef778\"",
+        "Allow": "GET, HEAD, OPTIONS",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+        "Access-Control-Allow-Headers": "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

@@ -1,0 +1,35 @@
+[
+  {
+    "request": {
+      "body": "[{\"value\":10786.352,\"name\":\"energy\",\"date\":\"2017-07-26\"},{\"value\":65.0,\"name\":\"carbohydrates\",\"date\":\"2017-07-26\"},{\"value\":138.0,\"name\":\"cholesterol\",\"date\":\"2017-07-26\"},{\"value\":179.0,\"name\":\"fat\",\"date\":\"2017-07-26\"},{\"value\":28.0,\"name\":\"fibre\",\"date\":\"2017-07-26\"},{\"value\":167.0,\"name\":\"protein\",\"date\":\"2017-07-26\"},{\"value\":1108.0,\"name\":\"sodium\",\"date\":\"2017-07-26\"},{\"value\":24.0,\"name\":\"sugar\",\"date\":\"2017-07-26\"}]",
+      "headers": {
+        "Authorization": "Bearer ACCESS_TOKEN",
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://exist.io/api/1/attributes/update/"
+    },
+    "response": {
+      "body": "{\"failed\":[],\"success\":[{\"date\":\"2017-07-26\",\"name\":\"energy\",\"value\":10786.352},{\"date\":\"2017-07-26\",\"name\":\"carbohydrates\",\"value\":65},{\"date\":\"2017-07-26\",\"name\":\"protein\",\"value\":167},{\"date\":\"2017-07-26\",\"name\":\"fat\",\"value\":179},{\"date\":\"2017-07-26\",\"name\":\"fibre\",\"value\":28},{\"date\":\"2017-07-26\",\"name\":\"sugar\",\"value\":24},{\"date\":\"2017-07-26\",\"name\":\"sodium\",\"value\":1108},{\"date\":\"2017-07-26\",\"name\":\"cholesterol\",\"value\":138}]}",
+      "headers": {
+        "Server": "nginx/1.6.2",
+        "Date": "Wed, 26 Jul 2017 11:04:27 GMT",
+        "Content-Type": "application/json",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "Vary": "Cookie",
+        "ETag": "\"9e1cf37f49620182582f0ac977503792\"",
+        "Allow": "POST, OPTIONS",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+        "Access-Control-Allow-Headers": "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

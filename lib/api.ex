@@ -5,6 +5,7 @@ defmodule ExistExtras.Api do
 
   plug Plug.Parsers,
     pass: ["*/*"],
+    json_decoder: Poison,
     parsers: [:urlencoded, :json]
 
   plug ExistExtras.Api.Middleware.Authenticate
@@ -18,19 +19,26 @@ defmodule ExistExtras.Api do
       |> put_status(200)
       |> html(landing_page)
     else
-      conn |> redirect("/home")
+      conn |> redirect("/nutrition")
     end
   end
 
-  desc "home page"
-  get :home do
+  desc "nutrition page"
+  params do
+    optional :saved, type: Boolean
+  end
+  get :nutrition do
     cond do
       !conn.assigns[:user_id] -> conn |> redirect("/")
       !ExistExtras.Exist.authorized?(conn.assigns[:user_id]) -> conn |> redirect("/exist")
       true ->
-        home_page = Mustache.render(
-          File.read!("views/home.mustache"), %{today: Date.to_string(Date.utc_today)}
-        )
+        render_context = %{
+          today: Date.to_string(Date.utc_today),
+          saved: params[:saved] || [],
+          attributes: ExistExtras.Exist.acquired_attributes(conn.assigns[:user_id])
+        }
+
+        home_page = Mustachex.render(File.read!("views/nutrition.mustache"), render_context)
 
         conn
         |> put_status(200)
@@ -40,6 +48,23 @@ defmodule ExistExtras.Api do
 
   namespace :google, do: mount ExistExtras.Api.Google
   namespace :exist, do: mount ExistExtras.Api.Exist
+
+  namespace :css do
+    route_param :file, type: String do
+      desc "css files"
+      get do
+        neat_file = Regex.run(~r/(\w+\.css)/, params[:file], capture: :all_but_first)
+
+        if File.exists?("css/#{neat_file}") do
+          conn
+          |> put_resp_header("content-type", "text/css")
+          |> send_file(200, "css/#{neat_file}")
+        else
+          raise Maru.Exceptions.NotFound
+        end
+      end
+    end
+  end
 
   rescue_from Maru.Exceptions.NotFound do
     conn

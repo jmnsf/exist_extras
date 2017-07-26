@@ -38,6 +38,33 @@ defmodule ExistExtras.Api.ExistTest do
 
     # see sync tests
   end
+
+  describe "POST /exist/nutrition" do
+    test "redirects to root when not logged in" do
+      response =
+        build_conn()
+        |> put_body_or_params(%{date: "2017-07-26", calories: 9001})
+        |> post("/exist/nutrition")
+
+      assert response.status == 302
+      [location] = Plug.Conn.get_resp_header(response, "location")
+      assert location == "/"
+    end
+
+    # see sync tests
+  end
+
+  describe "POST /exist/attributes/acquire" do
+    test "redirects to root when not logged in" do
+      response = post("/exist/attributes/acquire")
+
+      assert response.status == 302
+      [location] = Plug.Conn.get_resp_header(response, "location")
+      assert location == "/"
+    end
+
+    # see sync tests
+  end
 end
 
 defmodule ExistExtras.Api.ExistTestSync do
@@ -48,15 +75,15 @@ defmodule ExistExtras.Api.ExistTestSync do
   import ExistExtras.ApiUtils
 
   setup_all do
-    ExVCR.Config.cassette_library_dir "fixtures/vcr_cassettes"
+    ExVCR.Config.cassette_library_dir "fixtures/vcr_cassettes/exist"
     :ok
   end
 
   @moduletag :api
 
   describe "GET /exist/oauth" do
-    test "redirects to home Exist" do
-      use_cassette "exist_authorize_code" do
+    test "redirects to the nutrition page" do
+      use_cassette "oauth_authorize", match_requests_on: [:request_body, :query] do
         response =
           auth_conn("1234")
           |> get("/exist/oauth?code=some-code")
@@ -64,12 +91,12 @@ defmodule ExistExtras.Api.ExistTestSync do
         [location] = Plug.Conn.get_resp_header(response, "location")
 
         assert response.status == 302
-        assert location == "/home"
+        assert location == "/nutrition"
       end
     end
 
-    test "authorizes the received code and saves the tokens" do
-      use_cassette "exist_authorize_code" do
+    test "authorizes the received code, saves the tokens and acquires attribute ownership" do
+      use_cassette "oauth_authorize", match_requests_on: [:request_body, :query] do
         response =
           auth_conn("1234")
           |> get("/exist/oauth?code=some-code")
@@ -80,6 +107,48 @@ defmodule ExistExtras.Api.ExistTestSync do
           ExistExtras.Redis.redis_connection!(),
           ~w(TTL exist:access_tokens:1234)
         ) == 31535999
+      end
+    end
+  end
+
+  describe "POST /exist/nutrition" do
+    test "posts the given nutrition data to Exist with the right conversions" do
+      use_cassette "save_nutrition", match_requests_on: [:request_body] do
+        body = %{
+          date: "2017-07-26",
+          calories: 2578,
+          carbs: 65,
+          protein: 167,
+          fat: 179,
+          fiber: 28,
+          sugar: 24,
+          sodium: 1108,
+          cholesterol: 138
+        }
+
+        response =
+          auth_conn("1234")
+          |> put_body_or_params(body)
+          |> post("/exist/nutrition")
+
+        assert response.status == 302
+
+        [location] = Plug.Conn.get_resp_header(response, "location")
+        assert location == "/nutrition?saved=true"
+      end
+    end
+  end
+
+  describe "POST /exist/attributes/acquire" do
+    test "re-acquires attributes from Exist" do
+      use_cassette "acquire_attribute_ownership", match_requests_on: [:request_body] do
+        response =
+          auth_conn("1234")
+          |> post("/exist/attributes/acquire")
+
+        assert response.status == 302
+        [location] = Plug.Conn.get_resp_header(response, "location")
+        assert location == "/nutrition"
       end
     end
   end

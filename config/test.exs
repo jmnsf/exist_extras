@@ -6,6 +6,12 @@ config :logger,
 config :maru, ExistExtras.Api,
   http: [port: 8888]
 
+config :exvcr, [
+  filter_sensitive_data: [
+    [pattern: "Bearer \\w+", placeholder: "Bearer ACCESS_TOKEN"]
+  ]
+]
+
 config :exist_extras, ExistExtras.Redis,
   endpoint: "redis://localhost/12"
 

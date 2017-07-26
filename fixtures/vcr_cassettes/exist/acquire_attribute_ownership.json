@@ -1,0 +1,35 @@
+[
+  {
+    "request": {
+      "body": "[{\"name\":\"energy\",\"active\":true},{\"name\":\"carbohydrates\",\"active\":true},{\"name\":\"fat\",\"active\":true},{\"name\":\"fibre\",\"active\":true},{\"name\":\"protein\",\"active\":true},{\"name\":\"sugar\",\"active\":true},{\"name\":\"sodium\",\"active\":true},{\"name\":\"cholesterol\",\"active\":true}]",
+      "headers": {
+        "Authorization": "Bearer ACCESS_TOKEN",
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://exist.io/api/1/attributes/acquire/"
+    },
+    "response": {
+      "body": "{\"failed\":[],\"success\":[{\"active\":true,\"name\":\"energy\"},{\"active\":true,\"name\":\"carbohydrates\"},{\"active\":true,\"name\":\"fat\"},{\"active\":true,\"name\":\"fibre\"},{\"active\":true,\"name\":\"protein\"},{\"active\":true,\"name\":\"sugar\"},{\"active\":true,\"name\":\"sodium\"},{\"active\":true,\"name\":\"cholesterol\"}]}",
+      "headers": {
+        "Server": "nginx/1.6.2",
+        "Date": "Wed, 26 Jul 2017 10:41:00 GMT",
+        "Content-Type": "application/json",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "Vary": "Cookie",
+        "ETag": "\"94ddd1a79aa169f586711a364b80737d\"",
+        "Allow": "POST, OPTIONS",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+        "Access-Control-Allow-Headers": "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]
