@@ -1,19 +1,23 @@
 # ExistExtras
 
-**TODO: Add description**
+This is a simple app for manually uploading nutritional data onto [Exist](https://exist.io).
 
-## Installation
+## Future Features
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `exist_extras` to your list of dependencies in `mix.exs`:
+* Grab nutrition data from Google Fit & upload automatically
 
-```elixir
-def deps do
-  [{:exist_extras, "~> 0.1.0"}]
-end
-```
+## Development
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/exist_extras](https://hexdocs.pm/exist_extras).
+Needs a local redis server in the standard port. Otherwise, just `iex -S mix` to start the app locally.
 
+## Deploying
+
+This is hosted on an EC2 instance in AWS at `exist.jmnsf.com`. Deploying is through an Erlang release built with `distillery`. In production, the project runs on a Docker container.
+
+### Pre-requisites
+
+* RSA private key in `devops/exist-extras.pem` with access to the EC2 instance.
+
+### Deploy Script
+
+Running `devops/deploy.sh` will build a release using a local Docker container (to ensure the relase is built vs the right OS), upload it to the instance and restart the container with the updated app.
