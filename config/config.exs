@@ -33,24 +33,26 @@ config :logger,
   backends: [:console],
   compile_time_purge_level: :info
 
+config :maru, test: false
+
 config :maru, ExistExtras.Api,
-  http: [port: 80]
+  http: [ip: {0, 0, 0, 0}, port: 80]
 
 config :exist_extras, ExistExtras.Api.Cookies,
-  sign_key: System.get_env("COOKIE_SIGN_KEY")
+  sign_key: {:system, "COOKIE_SIGN_KEY"}
 
 config :exist_extras, ExistExtras.Redis,
-  endpoint: System.get_env("REDIS_DB") || "redis://localhost/13"
+  endpoint: {:system, "REDIS_DB", "redis://localhost/13"}
 
 config :exist_extras, ExistExtras.Google.OAuth,
-  client_id: System.get_env("GOOGLE_CLIENT_ID"),
-  client_secret: System.get_env("GOOGLE_CLIENT_SECRET"),
+  client_id: {:system, "GOOGLE_CLIENT_ID"},
+  client_secret: {:system, "GOOGLE_CLIENT_SECRET"},
   redirect_uri: "http://exist.jmnsf.com/google/oauth",
   discovery_doc_uri: "https://accounts.google.com/.well-known/openid-configuration"
 
 config :exist_extras, ExistExtras.Exist.OAuth,
-  client_id: System.get_env("EXIST_CLIENT_ID"),
-  client_secret: System.get_env("EXIST_CLIENT_SECRET"),
+  client_id: {:system, "EXIST_CLIENT_ID"},
+  client_secret: {:system, "EXIST_CLIENT_SECRET"},
   redirect_uri: "http://exist.jmnsf.com/exist/oauth",
   authorization_endpoint: "https://exist.io/oauth2/authorize",
   token_endpoint: "https://exist.io/oauth2/access_token"

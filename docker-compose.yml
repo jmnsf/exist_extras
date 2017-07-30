@@ -1,0 +1,34 @@
+version: '2'
+
+services:
+  redis:
+    image: redis:4.0.1
+    container_name: exist-extras-redis
+    volumes:
+      - ./docker/data/redis:/data
+    ports:
+      - "6380:6379"
+
+  prod:
+    build: .
+    container_name: exist-extras
+    command: bin/exist_extras start
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+    environment:
+      - MIX_ENV=prod
+      - REDIS_DB=redis://redis:6379
+    ports:
+      - "80:80"
+      - "443:443"
+
+  release:
+    build: .
+    container_name: exist-release
+    command: mix release --verbose
+    volumes:
+      - .:/app
+    environment:
+      - MIX_ENV=prod

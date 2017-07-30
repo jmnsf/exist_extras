@@ -6,13 +6,6 @@ defmodule ExistExtras.Google.OAuth do
 
   require Logger
 
-  @discovery_doc_uri Keyword.fetch!(
-    Application.get_env(:exist_extras, __MODULE__), :discovery_doc_uri
-  )
-  @client_id Keyword.fetch!(Application.get_env(:exist_extras, __MODULE__), :client_id)
-  @client_secret Keyword.fetch!(Application.get_env(:exist_extras, __MODULE__), :client_secret)
-  @redirect_uri Keyword.fetch!(Application.get_env(:exist_extras, __MODULE__), :redirect_uri)
-
   @doc """
   Authorizes the given `code` with Google. If successful, returns the user's ID.
   Otherwise, returns `nil`.
@@ -20,9 +13,9 @@ defmodule ExistExtras.Google.OAuth do
   def authorize(code) do
     payload = [
       {"code", code},
-      {"client_id", @client_id},
-      {"client_secret", @client_secret},
-      {"redirect_uri", @redirect_uri},
+      {"client_id", client_id()},
+      {"client_secret", client_secret()},
+      {"redirect_uri", redirect_uri()},
       {"grant_type", "authorization_code"}
     ]
 
@@ -54,8 +47,8 @@ defmodule ExistExtras.Google.OAuth do
   """
   def build_authorize_url(scopes) do
     query = %{
-      client_id: @client_id,
-      redirect_uri: @redirect_uri,
+      client_id: client_id(),
+      redirect_uri: redirect_uri(),
       scope: Enum.join(scopes, " "),
       state: generate_state(),
       response_type: "code",
@@ -142,7 +135,7 @@ defmodule ExistExtras.Google.OAuth do
 
   # https://developers.google.com/identity/protocols/OpenIDConnect#discovery
   defp fetch_discovery_doc do
-    {:ok, %HTTPoison.Response{status_code: 200, body: doc}} = HTTPoison.get @discovery_doc_uri
+    {:ok, %HTTPoison.Response{status_code: 200, body: doc}} = HTTPoison.get discovery_doc_uri()
     redis = ExistExtras.Redis.redis_connection!()
 
     Redix.pipeline! redis, [
@@ -151,5 +144,21 @@ defmodule ExistExtras.Google.OAuth do
     ]
 
     doc
+  end
+
+  defp discovery_doc_uri do
+    ExistExtras.fetch_config!(:exist_extras, __MODULE__, :discovery_doc_uri)
+  end
+
+  defp client_id do
+    ExistExtras.fetch_config!(:exist_extras, __MODULE__, :client_id)
+  end
+
+  defp client_secret do
+    ExistExtras.fetch_config!(:exist_extras, __MODULE__, :client_secret)
+  end
+
+  defp redirect_uri do
+    ExistExtras.fetch_config!(:exist_extras, __MODULE__, :redirect_uri)
   end
 end

@@ -3,11 +3,6 @@ defmodule ExistExtras.Api.Cookies do
 
   require Logger
 
-  @sign_key Keyword.fetch!(
-    Application.get_env(:exist_extras, ExistExtras.Api.Cookies),
-    :sign_key
-  )
-
   @doc """
   Puts a `value` in the response cookies, signed, on the given `key`, with the
   defined `max_age`.
@@ -42,6 +37,14 @@ defmodule ExistExtras.Api.Cookies do
   end
 
   defp generate_signature(value) do
-    :crypto.hmac(:sha512, @sign_key, value) |> Base.encode16()
+    :crypto.hmac(:sha512, sign_key(), value) |> Base.encode16()
+  end
+
+  defp sign_key do
+    case ExistExtras.fetch_config!(:exist_extras, ExistExtras.Api.Cookies, :sign_key) do
+      nil -> throw "Cookie signature key is nil!"
+      "" -> throw "Cookie signature key is empty!"
+      key -> key
+    end
   end
 end

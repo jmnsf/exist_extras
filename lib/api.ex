@@ -3,6 +3,9 @@ defmodule ExistExtras.Api do
 
   require Logger
 
+  @landing_page File.read! Path.join("views", "landing.mustache")
+  @nutrition_page File.read! Path.join("views", "nutrition.mustache")
+
   plug Plug.Parsers,
     pass: ["*/*"],
     json_decoder: Poison,
@@ -13,7 +16,7 @@ defmodule ExistExtras.Api do
   desc "landing page"
   get do
     if !conn.assigns[:user_id] do
-      landing_page = Mustache.render(File.read!("views/landing.mustache"))
+      landing_page = Mustachex.render @landing_page
 
       conn
       |> put_status(200)
@@ -38,7 +41,7 @@ defmodule ExistExtras.Api do
           attributes: ExistExtras.Exist.acquired_attributes(conn.assigns[:user_id])
         }
 
-        home_page = Mustachex.render(File.read!("views/nutrition.mustache"), render_context)
+        home_page = Mustachex.render(@nutrition_page, render_context)
 
         conn
         |> put_status(200)

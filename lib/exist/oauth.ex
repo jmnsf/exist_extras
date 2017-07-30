@@ -6,10 +6,6 @@ defmodule ExistExtras.Exist.OAuth do
 
   require Logger
 
-  @client_id Keyword.fetch!(Application.get_env(:exist_extras, __MODULE__), :client_id)
-  @client_secret Keyword.fetch!(Application.get_env(:exist_extras, __MODULE__), :client_secret)
-  @redirect_uri Keyword.fetch!(Application.get_env(:exist_extras, __MODULE__), :redirect_uri)
-
   @doc """
   Uses the given code to authorize the current User with Exist. Saves the
   received Access & Refresh Tokens to Redis.
@@ -17,9 +13,9 @@ defmodule ExistExtras.Exist.OAuth do
   def authorize(user_id, code) do
     payload = [
       {"code", code},
-      {"client_id", @client_id},
-      {"client_secret", @client_secret},
-      {"redirect_uri", @redirect_uri},
+      {"client_id", client_id()},
+      {"client_secret", client_secret()},
+      {"redirect_uri", redirect_uri()},
       {"grant_type", "authorization_code"}
     ]
 
@@ -49,8 +45,8 @@ defmodule ExistExtras.Exist.OAuth do
   """
   def build_authorize_url do
     query = %{
-      client_id: @client_id,
-      redirect_uri: @redirect_uri,
+      client_id: client_id(),
+      redirect_uri: redirect_uri(),
       scope: "read+write",
       response_type: "code"
     }
@@ -90,19 +86,25 @@ defmodule ExistExtras.Exist.OAuth do
   Grabs and returns exist's endpoint for initiating OAuth authorization.
   """
   def authorization_endpoint do
-    Keyword.fetch!(
-      Application.get_env(:exist_extras, __MODULE__),
-      :authorization_endpoint
-    )
+    ExistExtras.fetch_config!(:exist_extras, __MODULE__, :authorization_endpoint)
   end
 
   @doc """
   Grabs and returns exist's endpoint for OAuth token generation
   """
   def token_endpoint do
-    Keyword.fetch!(
-      Application.get_env(:exist_extras, __MODULE__),
-      :token_endpoint
-    )
+    ExistExtras.fetch_config!(:exist_extras, __MODULE__, :token_endpoint)
+  end
+
+  defp client_id do
+    ExistExtras.fetch_config!(:exist_extras, __MODULE__, :client_id)
+  end
+
+  defp client_secret do
+    ExistExtras.fetch_config!(:exist_extras, __MODULE__, :client_secret)
+  end
+
+  defp redirect_uri do
+    ExistExtras.fetch_config!(:exist_extras, __MODULE__, :redirect_uri)
   end
 end

@@ -3,6 +3,8 @@ use Mix.Config
 config :logger,
   compile_time_purge_level: :error
 
+config :maru, test: true
+
 config :maru, ExistExtras.Api,
   http: [port: 8888]
 

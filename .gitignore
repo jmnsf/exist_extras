@@ -24,3 +24,12 @@ erl_crash.dump
 
 # Ignore sublime workspace
 *.sublime-workspace
+
+# Mac stuff
+.DS_Store
+
+# SSH deploy key
+devops/exist-extras.pem
+
+# Local Docker data
+docker/data

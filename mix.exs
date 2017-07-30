@@ -16,7 +16,6 @@ defmodule ExistExtras.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     [
-      applications: [:redix, :maru, :httpoison],
       extra_applications: [:logger]
     ]
   end
@@ -34,10 +33,10 @@ defmodule ExistExtras.Mixfile do
     [
       {:redix, "~> 0.5.1"},
       {:maru, github: "elixir-maru/maru"},
-      {:mustache, "~> 0.0.2"},
       {:mustachex, "~> 0.0.1"},
       {:httpoison, "~> 0.11.1"},
       {:joken, "~> 1.1"},
+      {:distillery, "~> 1.4", runtime: false},
       {:exvcr, "~> 0.8", only: :test},
       {:floki, "~> 0.17.0", only: :test}
     ]
