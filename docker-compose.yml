@@ -12,11 +12,13 @@ services:
   prod:
     build: .
     container_name: exist-extras
-    command: bin/exist_extras start
+    command: bin/exist_extras foreground
     volumes:
       - .:/app
     depends_on:
       - redis
+    env_file:
+      - ./docker/prod.env
     environment:
       - MIX_ENV=prod
       - REDIS_DB=redis://redis:6379
