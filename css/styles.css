@@ -9,3 +9,19 @@
 .attribute-label:last-of-type::after {
   content: '';
 }
+
+.hero-foot p {
+  padding-bottom: 1em;
+}
+
+.hero-foot .level-right {
+  padding-right: 1em;
+}
+
+.hero-foot .level-left {
+  padding-left: 1em;
+}
+
+.is-size-7 {
+  font-size: 0.75rem;
+}

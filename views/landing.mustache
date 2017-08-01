@@ -6,20 +6,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <script src="https://use.fontawesome.com/18ad05af1d.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.0/css/bulma.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-  <section class="hero is-fullheight is-dark">
+  <section class="hero is-fullheight is-light">
     <div class="hero-head">
       <header class="nav">
         <div class="container">
+          <div class="nav-left">
+            <span class="nav-item">
+              <h1>Exist Nutrition</h1>
+            </span>
+          </div>
           <div class="nav-right">
             <span class="nav-item">
-              <a class="button is-dark is-inverted" href="https://github.com/jmnsf/exist_extras">
+              <a class="button is-light is-inverted" href="https://github.com/jmnsf/exist_extras">
                 <span class="icon">
                   <i class="fa fa-github"></i>
                 </span>
-                <span>Source</span>
+                <span>Fork me!</span>
               </a>
             </span>
           </div>
@@ -29,27 +35,44 @@
 
     <div class="hero-body">
       <div class="container has-text-centered">
-        <h1 class="title">
-          Exist Extras
-        </h1>
+        <div class="columns is-multiline">
+          <div class="column is-full">
+            <h1 class="title">
+              Exist Nutrition Importer
+            </h1>
 
-        <h2 class="subtitle">
-          Extra integrations for getting your data into <a href="https://exist.io">Exist</a>
-        </h2>
+            <h2 class="subtitle">
+              A simple integration with <a href="https://exist.io">Exist</a> that lets you import your nutrition data manually.
+            </h2>
 
-        <a class="button is-dark is-inverted" href="/google">
-          <span class="icon">
-            <i class="fa fa-google"></i>
-          </span>
-          <span>Start by Logging In</span>
-        </a>
+            <a class="button is-light is-inverted" href="/google">
+              <span class="icon">
+                <i class="fa fa-google"></i>
+              </span>
+              <span>Start by Logging In</span>
+            </a>
+          </div>
+
+          <div class="column is-offset-one-quarter is-half">
+            <p class="has-text-grey-light">
+              Note: Google login is required so that we can associate your Exist account with something identifiable, and because we intend to add a Google Fit integration in the future.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="hero-foot">
-      <div class="container">
-        <p>Built by <a href="https://twitter.com/jmnsferreira">@jmnsferreira</a></p>
-      </div>
+      <nav class="level">
+        <div class="level-left">
+          <p class="level-item">Built by <a href="https://twitter.com/jmnsferreira">@jmnsferreira <i class="fa fa-twitter"></i></a></p>
+        </div>
+        <div class="level-right">
+          <p class="level-item has-text-grey-light">
+            Not officially supported or endorsed by Exist.
+          </p>
+        </div>
+      </nav>
     </div>
   </section>
 </body>
