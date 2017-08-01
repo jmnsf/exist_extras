@@ -5,6 +5,10 @@ defmodule ExistExtras.Api do
 
   @landing_page File.read! Path.join("views", "landing.mustache")
   @nutrition_page File.read! Path.join("views", "nutrition.mustache")
+  @css_files File.ls!("css")
+    |> Stream.map(&Path.join("css", &1))
+    |> Stream.filter(&File.regular?(&1))
+    |> Enum.reduce(%{}, fn (file, files) -> Map.put(files, file, File.read!(file)) end)
 
   plug Plug.Parsers,
     pass: ["*/*"],
@@ -56,14 +60,12 @@ defmodule ExistExtras.Api do
     route_param :file, type: String do
       desc "css files"
       get do
-        neat_file = Regex.run(~r/(\w+\.css)/, params[:file], capture: :all_but_first)
-
-        if File.exists?("css/#{neat_file}") do
-          conn
-          |> put_resp_header("content-type", "text/css")
-          |> send_file(200, "css/#{neat_file}")
-        else
-          raise Maru.Exceptions.NotFound
+        case Map.get(@css_files, Path.join("css", params[:file])) do
+          nil -> raise Maru.Exceptions.NotFound
+          css ->
+            conn
+            |> put_resp_header("content-type", "text/css")
+            |> send_resp(200, css)
         end
       end
     end
