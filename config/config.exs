@@ -53,7 +53,7 @@ config :exist_extras, ExistExtras.Google.OAuth,
 config :exist_extras, ExistExtras.Exist.OAuth,
   client_id: {:system, "EXIST_CLIENT_ID"},
   client_secret: {:system, "EXIST_CLIENT_SECRET"},
-  redirect_uri: "http://exist.jmnsf.com/exist/oauth",
+  redirect_uri: {:system, "EXIST_REDIRECT_URI", "https://exist.jmnsf.com/exist/oauth"},
   authorization_endpoint: "https://exist.io/oauth2/authorize",
   token_endpoint: "https://exist.io/oauth2/access_token"
 

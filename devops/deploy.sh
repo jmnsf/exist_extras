@@ -10,7 +10,7 @@ scp -i devops/exist-extras.pem \
 scp -i devops/exist-extras.pem \
   docker-compose.yml ec2-user@35.166.205.77:docker-compose.yml
 
-ssh -i devops/exist-extras.pem ec2-user@35.166.205.77 'tar -xzvf exist_extras.tar.gz'
+ssh -i devops/exist-extras.pem ec2-user@35.166.205.77 'tar -xzf exist_extras.tar.gz'
 
 ssh -i devops/exist-extras.pem ec2-user@35.166.205.77 \
   'docker-compose down && docker-compose up -d prod'

@@ -29,7 +29,7 @@ services:
   release:
     build: .
     container_name: exist-release
-    command: mix release --verbose
+    command: bash -c "mix compile --force && mix release --verbose"
     volumes:
       - .:/app
     environment:
